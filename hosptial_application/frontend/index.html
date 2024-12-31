@@ -9,20 +9,43 @@
         <link rel="stylesheet" href="indexstyle.css">
         <header>
             <div class="header">
-            <img src="tapimg.jpg" width="300px" height="100px">
+            <img class="banner"src="tapimg.jpg" width="300px" height="100px">
             <h3>WELCOME TO TAP HOSPITAL</h3>
             </div>
             <nav>
-                    <a href="/Users/katragaddavenkatasivapranay/webpage.html" target="_blank">Home</a>
+                    <a href="#" target="_blank">Home</a>
                     <a href="#DATA" target="_blank">Data base</a>
                     <a href="#">Consultance</a>
                     <a href="#">Reference</a>
-                    <a href="#">About us</a>
+                    <a href="aboutus.html" target="_blank">About us</a>
+
             </nav>
             
         </header>
     </head>
     <body>
-    
+        <div class="mySlides">
+        <img src="sideimage.jpg" width="300px" height="300px">
+    </div>
+    <div class="mySlides">
+        <img src="slideshow1.jpg" width="300px" height="300px">
+    </div>
+    <div class="mySlides">
+        <img src="sildeshow2.jpg" width="300px" height="300px">
+    </div>
+    <script>
+        let slideIndex = 0;
+        slide();
+        function slide() {
+            let slides=document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        slides[slideIndex-1].style.display = "block"; 
+        setTimeout(slide,2000);
+    }
+    </script>
     </body>
 </html>
