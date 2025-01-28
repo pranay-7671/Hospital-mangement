@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Database</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    header {
+      background-color: #0056b3;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #0056b3;
+      color: white;
+    }
+
+    td {
+      background-color: #f9f9f9;
+    }
+
+    .date {
+      color: #555;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Database</h1>
+  </header>
+
+  <div class="container">
+    <h1>Consultation Records</h1>
+    <p class="date">Date: <span id="currentDate"></span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Department</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody id="recordsTable">
+        <!-- Records will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Display the current date
+    const currentDate = new Date().toLocaleDateString();
+    document.getElementById('currentDate').textContent = currentDate;
+
+    // Function to read data from localStorage and populate the table
+    function loadRecords() {
+      const recordsTable = document.getElementById('recordsTable');
+      const records = JSON.parse(localStorage.getItem()) || [];
+
+      // Clear existing rows
+      recordsTable.innerHTML = '';
+
+      // Populate the table with records
+      records.forEach(record => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+          <td>${record.name}</td>
+          <td>${record.email}</td>
+          <td>${record.phone}</td>
+          <td>${record.department}</td>
+          <td>${record.notes}</td>
+        `;
+
+        recordsTable.appendChild(row);
+      });
+    }
+
+    // Load records on page load
+    loadRecords();
+  </script>
+</body>
+</html>
