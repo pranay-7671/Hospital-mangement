@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding:0;
+}
+.container{
+    width:100%;
+    height:100vh;
+    background-image: url(signback.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.ban{
+    display: flex;
+    width:100%;
+    background-color: rgb(19, 132, 213,0.5) ;
+    
+    gap:300px;
+}
+.ban h1{
+    padding-top:40px;
+    
+    color: #000000;
+   
+}
+
+.header h2{
+    text-align:right;
+    color:rgb(244, 244, 244);
+    padding-right: 200px;
+    margin:  auto;
+    padding-top:200px;
+    font-size:50px;
+    letter-spacing: 5px;
+    height: 70px;
+   
+}
+.inputform{
+    text-align: right;
+    padding-right:200px;
+    padding-top:20px;
+    
+    
+}
+.label1{
+    color: white;
+    font-size: 40px;
+    padding-right: 50px;
+
+    
+}
+.label2{
+    color: white;
+    font-size: 40px;
+    padding-right: 69px;
+    
+}
+.but{
+    float:right;
+    padding-right: 250px;
+    
+}
+.but button{
+    width:150px;
+    height:40px ;
+    color:azure; 
+    background-color:blue; 
+    border-radius: 40px;
+    border:none;
+    transition-duration: 0.3s; 
+    box-shadow: none;
+}
+.but button:hover{
+    background-color: black;
+}
