@@ -9,64 +9,79 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f9;
+      background-color: #e3f2fd;
+      color: #333;
     }
 
     header {
-      background-color: #0056b3;
+      background: linear-gradient(135deg, #0044cc, #007bff);
       color: #fff;
       padding: 20px;
       text-align: center;
+      font-size: 1.8em;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .container {
-      max-width: 800px;
-      margin: 20px auto;
+      max-width: 900px;
+      margin: 40px auto;
       background: #fff;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
     }
 
     h1 {
-      color: #333;
+      color: #0044cc;
+      text-align: center;
       margin-bottom: 20px;
+    }
+
+    .date {
+      text-align: center;
+      font-size: 1.2em;
+      color: #555;
+      margin-bottom: 15px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 8px;
     }
 
     th, td {
       text-align: left;
-      padding: 10px;
-      border: 1px solid #ddd;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
     }
 
     th {
-      background-color: #0056b3;
+      background-color: #0044cc;
       color: white;
+      font-size: 1.1em;
+    }
+
+    tr:hover {
+      background-color: #f1f8ff;
     }
 
     td {
       background-color: #f9f9f9;
     }
-
-    .date {
-      color: #555;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Database</h1>
+    Database
   </header>
 
   <div class="container">
     <h1>Consultation Records</h1>
     <p class="date">Date: <span id="currentDate"></span></p>
+
     <table>
       <thead>
         <tr>
@@ -78,28 +93,20 @@
         </tr>
       </thead>
       <tbody id="recordsTable">
-        <!-- Records will be dynamically added here -->
       </tbody>
     </table>
   </div>
 
   <script>
-    // Display the current date
-    const currentDate = new Date().toLocaleDateString();
-    document.getElementById('currentDate').textContent = currentDate;
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
 
-    // Function to read data from localStorage and populate the table
     function loadRecords() {
       const recordsTable = document.getElementById('recordsTable');
-      const records = JSON.parse(localStorage.getItem()) || [];
-
-      // Clear existing rows
+      const records = JSON.parse(localStorage.getItem('consultationRecords')) || [];
       recordsTable.innerHTML = '';
 
-      // Populate the table with records
       records.forEach(record => {
         const row = document.createElement('tr');
-
         row.innerHTML = `
           <td>${record.name}</td>
           <td>${record.email}</td>
@@ -107,12 +114,10 @@
           <td>${record.department}</td>
           <td>${record.notes}</td>
         `;
-
         recordsTable.appendChild(row);
       });
     }
 
-    // Load records on page load
     loadRecords();
   </script>
 </body>
